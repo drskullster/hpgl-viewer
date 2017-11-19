@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HPGLViewer</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="docs/styles.css">
+</head>
+<body>
+<div class="container">
+    <div class="jumbotron">
+        <h1>HPGLViewer</h1>
+        <p>
+            Javascript HPGL viewer using HTML5 Canvas.
+        </p>
+        <p>
+            <a href="https://github.com/drskullster/HPGLViewer" title="View Github Repository">
+                View on Github
+            </a>
+        </p>
+    </div>
+
+    <div class="alert alert-warning" role="alert">
+        <strong>WARNING:</strong> This is a very early release, only a handful of HPGL commands are supported.
+        See <a href="https://github.com/drskullster/HPGLViewer/blob/master/README.md">README</a>
+        for a list.
+    </div>
+
+    <section>
+        <h2>Demo</h2>
+        <p>
+            <label for="hpgl-upload-input">Select a file : </label>
+            <input id="hpgl-upload-input" type="file">
+        </p>
+        <p>
+            <label for="hpgl-machine-width">Plotter max travel width : </label>
+            <input type="number" value="416" id="hpgl-machine-width"> mm
+        </p>
+        <p>
+            <label for="hpgl-machine-height">Plotter max travel height : </label>
+            <input type="number" value="259" id="hpgl-machine-height"> mm
+        </p>
+        <p class="text-sm">
+            Travel width and height define machine travel size.
+            It's used to get a sense of the scale of your HPGL file compared to your machine
+            (on Roland DXY 990 it's 416x259mm, nearly a landscape A3 sheet).
+        </p>
+        <canvas id="hpgl-viewer-canvas"></canvas>
+    </section>
+</div>
+
+<script type="text/javascript" src="src/HPGLViewer.js"></script>
+<script type="text/javascript" src="docs/scripts.js"></script>
+</body>
+</html>

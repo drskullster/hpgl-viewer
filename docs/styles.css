@@ -1,0 +1,15 @@
+html {
+    font-size: 16px;
+}
+
+body {
+    padding: 2rem 0;
+}
+
+#hpgl-viewer-canvas {
+    border: solid lightgrey 10px;
+}
+
+.text-sm {
+    font-size: .9rem;
+}
