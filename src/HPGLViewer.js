@@ -27,8 +27,12 @@ HPGLViewer = function(options) {
 
   setCanvasSize();
 
+  var log = function(msg) {
+    console.log("[HPGL Viewer]", msg);
+  }
+
   var logError = function(cmd) {
-    console.log("[HPGL Viewer] Could not parse line: ", cmd);
+    log("Could not parse line:" + cmd);
   };
 
   var isInt = function(value) {
@@ -61,6 +65,8 @@ HPGLViewer = function(options) {
     var commands = hpgl.split(";");
     var currentColor = options.layerColors[0];
     var prevCoords = [0, 0];
+    var isPenDown = false;
+    var self = this;
 
     this.clear();
     ctx.lineWidth = .5;
@@ -75,29 +81,33 @@ HPGLViewer = function(options) {
 
       if(cmd.match(/^PU/)) {
         // PEN UP
+        isPenDown = false;
         var subcmd = cmd.replace("PU", "").split(",");
         if(subcmd.length < 2) {
           return;
         }
 
-        ctx.beginPath();
-        var coord = coordinates(subcmd[0], subcmd[1]);
-        ctx.moveTo(coord[0], coord[1]);
-        prevCoords = coord;
+        prevCoords = self.move(subcmd);
       } else if(cmd.match(/^PD/)) {
         // PEN DOWN (PD400,0; or PD400,0,400,400;)
+        isPenDown = true;
         var subcmd = cmd.replace("PD", "").split(",");
         if(subcmd.length < 2) {
           return;
         }
 
-        while(subcmd.length) {
-          var subsubcmd = subcmd.splice(0, 2);
-          var coord = coordinates(subsubcmd[0], subsubcmd[1]);
-          ctx.lineTo(coord[0], coord[1]);
-          prevCoords = coord;
+        prevCoords = self.trace(subcmd);
+      } else if (cmd.match(/^PA/)) {
+        var subcmd = cmd.replace("PA", "").split(",");
+        if(subcmd.length < 2) {
+          return;
         }
-        ctx.stroke();
+
+        if (isPenDown) {
+          prevCoords = self.trace(subcmd);
+        } else {
+          prevCoords = self.move(subcmd);
+        }
       } else if(cmd.match(/^AA/)) {
         // ARC ABSOLUTE
         var subcmd = cmd.replace("AA", "").split(",");
@@ -127,13 +137,14 @@ HPGLViewer = function(options) {
         ctx.strokeStyle = currentColor;
       } else if(cmd.match(/^IN/)
           || cmd.match(/^VS/ ) // change Pen Speed
-          || cmd.match(/^PA/ ) // Position absolute
       ) {
         // Do nothing
       } else {
         logError(cmd);
       }
     });
+
+    log("Finished parsing");
   };
 
   this.setMachineTravelWidth = function(width) {
@@ -152,5 +163,24 @@ HPGLViewer = function(options) {
 
   this.clear = function() {
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+  };
+
+  this.move = function(cmd) {
+    ctx.beginPath();
+    var coord = coordinates(cmd[0], cmd[1]);
+    ctx.moveTo(coord[0], coord[1]);
+    return coord;
+  };
+
+  this.trace = function(cmd) {
+    var prevCoords;
+    while(cmd.length) {
+      var subcmd = cmd.splice(0, 2);
+      var coord = coordinates(subcmd[0], subcmd[1]);
+      ctx.lineTo(coord[0], coord[1]);
+      prevCoords = coord;
+    }
+    ctx.stroke();
+    return prevCoords;
   }
 };

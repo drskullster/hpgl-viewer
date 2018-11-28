@@ -40,6 +40,7 @@ Feed HPGL content to viewer :
 
 * `PU` Pen Up (simply move on canvas)
 * `PD` Pen Down
+* `PA` Plot with absolute coordinates
 * `AA` Arc
 * `SP` Pen Select
 
@@ -47,13 +48,13 @@ Feed HPGL content to viewer :
 
 * `IN` Initialize
 * `VS` speed select
-* `PA` Plot with absolute coordinates (like PD ?)
 
 ### Todo
 
 * `CP` and other Text related commands
 * `CI` Circles
 * `PR` Position relative to next point ?
+* `IP` and `SC` machine scale ?
 
 ## Reference
 
