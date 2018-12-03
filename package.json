@@ -1,7 +1,7 @@
 {
   "name": "hpgl-viewer",
   "version": "1.0.0",
-  "description": "Preview HPGL code in a Canvas",
+  "description": "Preview HPGL code in html Canvas",
   "main": "lib/hpgl-viewer.js",
   "scripts": {
     "dev": "webpack-dev-server --mode development",
