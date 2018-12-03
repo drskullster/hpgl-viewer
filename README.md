@@ -12,7 +12,7 @@ because HPGL is sooo old.
 
 ## Demo
 
-https://drskullster.github.io/HPGLViewer
+https://drskullster.github.io/HPGLViewer/demo
 
 ## Usage
 
@@ -33,6 +33,13 @@ then initialize with :
 Feed HPGL content to viewer :
 
     hpglViewer.draw("PU0,0;PD4000,4000;")
+
+## Development
+
+Library is packaged into a UMD module with webpack.
+
+You can run a development server that will watch changes
+and reload the demo page with `npm run dev`.
 
 ## HPGL Commands
 

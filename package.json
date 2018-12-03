@@ -1,0 +1,32 @@
+{
+  "name": "hpgl-viewer",
+  "version": "1.0.0",
+  "description": "Preview HPGL code in a Canvas",
+  "main": "lib/hpgl-viewer.js",
+  "scripts": {
+    "dev": "webpack-dev-server --mode development",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drskullster/HPGL-viewer.git"
+  },
+  "keywords": [
+    "HPGL",
+    "Canvas"
+  ],
+  "author": "Jonathan Berger <drskullster@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/drskullster/HPGL-viewer/issues"
+  },
+  "homepage": "https://github.com/drskullster/HPGL-viewer#readme",
+  "devDependencies": {
+    "@babel/core": "^7.1.6",
+    "@babel/preset-env": "^7.1.6",
+    "babel-loader": "^8.0.4",
+    "webpack": "^4.26.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10"
+  }
+}
