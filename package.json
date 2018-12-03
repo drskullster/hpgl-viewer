@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/drskullster/HPGL-viewer.git"
+    "url": "git+https://github.com/drskullster/hpgl-viewer.git"
   },
   "keywords": [
     "HPGL",
@@ -18,9 +18,9 @@
   "author": "Jonathan Berger <drskullster@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/drskullster/HPGL-viewer/issues"
+    "url": "https://github.com/drskullster/hpgl-viewer/issues"
   },
-  "homepage": "https://github.com/drskullster/HPGL-viewer#readme",
+  "homepage": "https://github.com/drskullster/hpgl-viewer#readme",
   "devDependencies": {
     "@babel/core": "^7.1.6",
     "@babel/preset-env": "^7.1.6",

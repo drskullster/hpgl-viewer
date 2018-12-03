@@ -20,6 +20,6 @@ module.exports = {
   },
   devServer: {
     contentBase: path.resolve(__dirname, 'demo'),
-    publicPath: '/lib/'
+    publicPath: '/hpgl-viewer/lib/'
   }
 };
