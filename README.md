@@ -12,7 +12,7 @@ because HPGL is sooo old.
 
 ## Demo
 
-https://drskullster.github.io/hgpl-viewer/demo
+https://drskullster.github.io/hpgl-viewer/demo
 
 ## Usage
 
