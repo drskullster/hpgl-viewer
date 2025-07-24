@@ -50,6 +50,7 @@ and reload the demo page with `npm run dev`.
 * `PA` Plot with absolute coordinates
 * `AA` Arc
 * `SP` Pen Select
+* `CI` Circles
 
 ### Ignored
 
@@ -59,7 +60,7 @@ and reload the demo page with `npm run dev`.
 ### Todo
 
 * `CP` and other Text related commands
-* `CI` Circles
+* `CI` Circles resolution parameter
 * `PR` Position relative to next point ?
 * `IP` and `SC` machine scale ?
 

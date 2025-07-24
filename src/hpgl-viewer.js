@@ -50,6 +50,10 @@ const HPGLViewer = (options) => {
     return [x, y];
   };
 
+  const _length = (l) => {
+    return (l / options.machineRatio) / (options.machineTravelWidth / canvasWidth);
+  }
+
   /**
    * Get distance between two points
    * https://stackoverflow.com/questions/20916953/get-distance-between-two-points-in-canvas
@@ -124,6 +128,14 @@ const HPGLViewer = (options) => {
         ctx.arc(coord[0], coord[1], radius, startAngle - angle, startAngle, true);
         ctx.stroke();
         prevCoords = coord;
+      } else if (cmd.match(/^CI/)) {
+        // CIRCLE
+        const subcmd = cmd.replace("CI", "").split(",");
+        const radius = _length(subcmd[0]);
+        const resolution = subcmd[1]; // Ignored for now.
+        ctx.beginPath();
+        ctx.ellipse(prevCoords[0], prevCoords[1], radius, radius, 0, 0, 2 * Math.PI);
+        ctx.stroke();
       } else if (cmd.match(/^SP/)) {
         // PEN SELECT
         const layerNumber = parseInt(cmd.replace("SP", "")) - 1;
